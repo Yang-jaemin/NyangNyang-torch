@@ -1,13 +1,14 @@
+from typing import List, Tuple, Iterable
 import random
 
 class Nyang_DataLoader:
-    def __init__(self, dataset, batch_size=1, shuffle=False):
+    def __init__(self, dataset: List[Tuple[str, List[int]]], batch_size: int = 1, shuffle: bool = False):
         self.dataset = dataset
         self.batch_size = batch_size
         self.shuffle = shuffle
         self.indexs = list(range(len(dataset))) 
 
-    def __iter__(self):
+    def __iter__(self) -> Iterable[Tuple[List[str], List[List[int]]]]:
         if self.shuffle:
             random.shuffle(self.indexs)
         for start_idx in range(0, len(self.dataset), self.batch_size):
@@ -19,5 +20,5 @@ class Nyang_DataLoader:
 
             yield images, labels  # 제너레이터 쓴 이유 : 배치로 뱉어주고 다음배치는 end_idx부터 시작해야되니까
 
-    def __len__(self):
+    def __len__(self) -> int:
         return (len(self.dataset) + self.batch_size - 1) // self.batch_size

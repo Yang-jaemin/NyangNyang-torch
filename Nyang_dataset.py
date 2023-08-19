@@ -1,16 +1,17 @@
 from abc import ABC, abstractmethod
+from typing import Any, Callable, Optional
 
 class Nyang_Dataset(ABC):
     
-    def __init__(self, transform=None):
+    def __init__(self, transform: Optional[Callable] = None):
         self.transform = transform
     
     @abstractmethod
-    def __len__(self):
+    def __len__(self) -> int:
         pass
     
     @abstractmethod
-    def __getitem__(self, idx):
+    def __getitem__(self, idx: int) -> Any:
         pass
     
     
