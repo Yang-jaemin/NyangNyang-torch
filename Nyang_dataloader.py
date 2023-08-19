@@ -12,7 +12,7 @@ class Nyang_DataLoader:
         self.indexs = list(range(len(dataset)))
          
 
-    def __iter__(self) -> Iterable[Tuple[List[np.ndarray], List[str], List[List[int]]]]:
+    def __iter__(self) -> Iterable[Tuple[List[np.ndarray], List[List[int]]]]:
         if self.shuffle:
             random.shuffle(self.indexs)
         for start_idx in range(0, len(self.dataset), self.batch_size):
@@ -33,7 +33,7 @@ class Nyang_DataLoader:
                 else:
                     numpy_images.append(np.array(image))
 
-            yield numpy_images, images, labels  # 제너레이터 쓴 이유 : 배치로 뱉어주고 다음배치는 end_idx부터 시작해야되니까
+            yield numpy_images, labels  # 제너레이터 쓴 이유 : 배치로 뱉어주고 다음배치는 end_idx부터 시작해야되니까
 
     def __len__(self) -> int:
         return (len(self.dataset) + self.batch_size - 1) // self.batch_size

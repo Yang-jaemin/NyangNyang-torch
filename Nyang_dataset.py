@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
-from typing import Any, Callable, Optional
+from typing import Any, Tuple, List
+from Nyang_utils import Nyang_split
 
 class Nyang_Dataset(ABC):
     
@@ -25,7 +26,32 @@ class Nyang_Dataset(ABC):
     # 장점 2. 클래스 구현 가이드 -> 필요한 부분을 빠트리지 않게 ㅇㅇ
     
     # 요약하면, @abstractmethod 데코레이터는 해당 메서드가 반드시 구현되어야 함을 나타내며, 이를 통해 클래스의 설계 의도와 구조를 더 명확하게 표현할 수 있게 함
+    
 
+class NyangNyang_Dataset(Nyang_Dataset):
+    
+    def __init__(self, root_dir, classes, ratios = (0.8, 0.1, 0.1)):
+        self.train_data, self.valid_data, self.test_data = Nyang_split(root_dir, classes, ratios)
+        self.data = self.train_data  # 기본적으로 train 데이터로 설정
+        
+    def set_mode(self, mode: str):
+        if mode == "train":
+            self.data = self.train_data
+        elif mode == "valid":
+            self.data = self.valid_data
+        elif mode == "test":
+            self.data = self.test_data
+        else:
+            raise ValueError("Invalid mode. Choose from ['train', 'valid', 'test']")
+        
+        return self # method chaining
+    
+    def __len__(self):
+        return len(self.data)
+    
+    def __getitem__(self, idx: int) -> Tuple[str, List[int]]:
+        image_path, label = self.data[idx]
+        return image_path, label 
     
     
     
