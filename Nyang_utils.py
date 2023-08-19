@@ -3,6 +3,7 @@ import random
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 from typing import List, Tuple
+import numpy as np
 
 
 def Nyang_split(root_dir: str, classes: List[str], ratios: Tuple[float, float, float] = (0.8, 0.1, 0.1)) -> Tuple[List[Tuple[str, List[int]]], List[Tuple[str, List[int]]], List[Tuple[str, List[int]]]]:
@@ -62,11 +63,12 @@ def Nyang_split(root_dir: str, classes: List[str], ratios: Tuple[float, float, f
 
 
 
-def Nyang_images_grid(images: List[str], labels: List[List[int]], classes: List[str], nrows: int, ncols: int) -> None:
+def Nyang_images_grid(images: List[np.ndarray], labels: List[List[int]], classes: List[str], nrows: int, ncols: int) -> None:
     """
     
     - 이미지들과 레이블을 그리드 형태로 시각화합니다.
     - one hot incoding을 풀어서 class name을 보여줍니다.
+    - augmentation 적용을 확인 해볼 수 있습니다.
     
     """
     fig, axs = plt.subplots(nrows, ncols, figsize=(15, 15))
@@ -76,7 +78,7 @@ def Nyang_images_grid(images: List[str], labels: List[List[int]], classes: List[
         if i < len(images):
             index = labels[i].index(1) # 원 핫 인코딩 풀어주기
             class_name = classes[index]
-            axs[i].imshow(mpimg.imread(images[i]))
+            axs[i].imshow(images[i])  # 이미 np.array 형태의 이미지를 직접 imshow에 전달
             axs[i].set_title(class_name)
             axs[i].axis('off')
         else:

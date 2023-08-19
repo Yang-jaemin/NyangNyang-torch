@@ -3,8 +3,8 @@ from typing import Any, Callable, Optional
 
 class Nyang_Dataset(ABC):
     
-    def __init__(self, transform: Optional[Callable] = None):
-        self.transform = transform
+    def __init__(self):
+        pass
     
     @abstractmethod
     def __len__(self) -> int:
