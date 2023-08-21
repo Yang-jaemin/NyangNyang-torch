@@ -8,12 +8,20 @@ def Nyang_transforms() -> Tuple[Compose, Compose]:
         #A.RandomCrop(5, 5),
         A.VerticalFlip(p=1.0),
         #A.RandomBrightnessContrast(p=0.2),
+        A.Normalize(mean=[0.5], std=[0.5])
         #A.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
     ])
 
     valid_transform = A.Compose([
-        A.Resize(128, 128),
+        # A.Resize(128, 128),
         #A.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
+        A.Normalize(mean=[0.5], std=[0.5])
+    ])
+    
+    test_transform = A.Compose([
+        #A.Resize(128, 128),
+        #A.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
+        A.Normalize(mean=[0.5], std=[0.5])
     ])
 
-    return train_transform, valid_transform
+    return train_transform, valid_transform, test_transform
