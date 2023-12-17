@@ -2,7 +2,8 @@
 
 ## NyangNyang torch
 
-![스크린샷 2023-12-17 오후 9.25.42.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/35860b6c-2d3d-4a76-9237-ed427ebe063a/307653ff-0d1d-4597-8d53-26360c54aec7/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-12-17_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_9.25.42.png)
+<img width="413" alt="스크린샷 2023-12-17 오후 9 34 46" src="https://github.com/Yang-jaemin/YangYang-torch/assets/108872973/5c6bb68b-9b96-4f79-ab36-3946798074b5">
+
 
 ### 1) 선정 동기
 
